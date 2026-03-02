@@ -1,6 +1,4 @@
-import pg from 'pg';
-
-const { Pool } = pg;
+const { Pool } = require('pg');
 
 let pool = null;
 
@@ -21,7 +19,7 @@ function getPool() {
   return pool;
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -79,4 +77,4 @@ export default async function handler(req, res) {
     console.error('Database error:', error);
     return res.status(500).json({ error: 'Internal server error', details: error.message });
   }
-}
+};
