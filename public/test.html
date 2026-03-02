@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test</title></head>
+<body>
+<h1>VardQR Test Page</h1>
+<p>Si ves esto, el frontend funciona.</p>
+<button onclick="testAPI()">Test API</button>
+<pre id="result"></pre>
+<script>
+async function testAPI() {
+  try {
+    const r = await fetch('/api/health');
+    const d = await r.text();
+    document.getElementById('result').textContent = d;
+  } catch(e) {
+    document.getElementById('result').textContent = 'Error: ' + e.message;
+  }
+}
+</script>
+</body>
+</html>
